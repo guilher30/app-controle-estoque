@@ -1,6 +1,8 @@
 package application;
 
 import db.DB;
+import model.dao.DaoFactory;
+import model.dao.ProdutoDao;
 
 public class Program {
 
@@ -8,6 +10,7 @@ public class Program {
 		DB db = new DB();
 		DB.getConnection();
 		db.estaConecatdo();
+		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
 	}
 
 }
