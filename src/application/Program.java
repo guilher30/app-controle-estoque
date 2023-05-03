@@ -10,7 +10,7 @@ public class Program {
 		DB db = new DB();
 		DB.getConnection();
 		db.estaConecatdo();
-		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
+		
 	}
 
 }

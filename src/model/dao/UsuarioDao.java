@@ -2,7 +2,7 @@ package model.dao;
 
 import java.util.List;
 
-import model.entities.Usuario;
+import model.beans.Usuario;
 
 public interface UsuarioDao {
 	void insert(Usuario obj);

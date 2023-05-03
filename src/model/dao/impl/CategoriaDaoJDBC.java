@@ -2,8 +2,8 @@ package model.dao.impl;
 
 import java.util.List;
 
+import model.beans.Categoria;
 import model.dao.CategoriaDao;
-import model.entities.Categoria;
 
 public class CategoriaDaoJDBC implements CategoriaDao {
 

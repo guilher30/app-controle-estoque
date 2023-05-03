@@ -2,8 +2,8 @@ package model.dao.impl;
 
 import java.util.List;
 
+import model.beans.Usuario;
 import model.dao.UsuarioDao;
-import model.entities.Usuario;
 
 public class UsuarioDaoJDBC implements UsuarioDao{
 
