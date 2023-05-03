@@ -1,8 +1,7 @@
 package application;
 
 import db.DB;
-import model.dao.DaoFactory;
-import model.dao.ProdutoDao;
+
 
 public class Program {
 
