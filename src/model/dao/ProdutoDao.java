@@ -2,6 +2,8 @@ package model.dao;
 
 import java.util.List;
 
+import model.beans.Produto;
+
 public interface ProdutoDao {
 	
 	void insert(ProdutoDao obj);
@@ -10,7 +12,7 @@ public interface ProdutoDao {
 
 	void deleteByid(Integer id);
 
-	ProdutoDao findById(Integer id);
+	Produto findById(Integer id);
 
 	List<ProdutoDao> findAll();
 }

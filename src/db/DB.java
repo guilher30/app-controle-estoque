@@ -35,7 +35,7 @@ public class DB {
 
 	public boolean estaConecatdo() {
 		if (this.conn != null) {
-			System.out.println("Conectado!");
+			System.out.println("Conectado ao banco de dados!");
 			return true;
 		} else {
 			return false;
