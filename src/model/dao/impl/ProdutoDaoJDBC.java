@@ -52,17 +52,8 @@ public class ProdutoDaoJDBC implements ProdutoDao{
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			if(rs.next()) {
-				Categoria cat = new Categoria();
-				cat.setId(rs.getInt("CategoriaId"));
-				cat.setNome(rs.getString("CatNome"));
-				Produto obj = new Produto();
-				obj.setId(rs.getInt("Id"));
-				obj.setNome(rs.getString("Nome"));
-				obj.setQtd(rs.getInt("Qtd"));
-				obj.setQtdMin(rs.getInt("QtdMin"));
-				obj.setQtdMax(rs.getInt("QtdMax"));
-				obj.setDataCad(rs.getDate("DataCad"));
-				obj.setCategoria(cat);
+				Categoria cat = instanciarCategoria(rs);
+				Produto obj = instaciarProduto(rs, cat);
 				return obj;
 				
 			}
@@ -74,6 +65,26 @@ public class ProdutoDaoJDBC implements ProdutoDao{
 		    	DB.closeResultSet(rs);
 		    }
 		
+	}
+
+	private Produto instaciarProduto(ResultSet rs, Categoria cat) throws SQLException {
+		
+		 Produto obj = new Produto();
+			obj.setId(rs.getInt("Id"));
+			obj.setNome(rs.getString("Nome"));
+			obj.setQtd(rs.getInt("Qtd"));
+			obj.setQtdMin(rs.getInt("QtdMin"));
+			obj.setQtdMax(rs.getInt("QtdMax"));
+			obj.setDataCad(rs.getDate("DataCad"));
+			obj.setCategoria(cat);
+			return obj;
+	}
+
+	private Categoria instanciarCategoria(ResultSet rs) throws SQLException {
+		Categoria cat = new Categoria();
+		cat.setId(rs.getInt("CategoriaId"));
+		cat.setNome(rs.getString("CatNome"));
+		return cat;
 	}
 
 	@Override

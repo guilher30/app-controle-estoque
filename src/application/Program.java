@@ -15,7 +15,7 @@ public class Program {
 		
 		
 		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
-		
+		System.out.println("====Teste 1: produto findByID: =======" );
 		Produto produto = produtoDao.findById(3);
 		
 		System.out.println(produto);
