@@ -1,5 +1,6 @@
 package application;
 
+import controller.ProdutoController;
 import db.DB;
 import model.beans.Produto;
 import model.dao.DaoFactory;
@@ -14,12 +15,8 @@ public class Program {
 		db.estaConecatdo();
 		
 		
-		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
-		System.out.println("====Teste 1: produto findByID: =======" );
-		Produto produto = produtoDao.findById(3);
-		
-		System.out.println(produto);
-		
+		ProdutoController pc = new ProdutoController();
+		pc.valFindById();
 		
 	}
 

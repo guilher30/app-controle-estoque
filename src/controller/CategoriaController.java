@@ -1,5 +1,6 @@
 package controller;
 
-public class CategoriaController {
 
+public class CategoriaController {
+	
 }
