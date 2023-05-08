@@ -2,6 +2,7 @@ package model.dao;
 
 import java.util.List;
 
+import model.beans.Categoria;
 import model.beans.Produto;
 
 public interface ProdutoDao {
@@ -15,4 +16,6 @@ public interface ProdutoDao {
 	Produto findById(Integer id);
 
 	List<ProdutoDao> findAll();
+	
+	List<Produto> findByCategoria(Categoria Categoria);
 }

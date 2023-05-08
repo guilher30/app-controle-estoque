@@ -55,7 +55,7 @@ public class Categoria implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Categoria [id=" + id + ", nome=" + nome + "]";
+		return nome;
 	}
 	
 	
