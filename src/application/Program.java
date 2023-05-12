@@ -15,8 +15,9 @@ public class Program {
 		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
 		
 		ProdutoController pc = new ProdutoController();
-		pc.valFindById();
-		pc.findByCategoria();
+//		pc.valFindById();
+//		pc.findByCategoria();
+		pc.findAll();
 		
 		
 		

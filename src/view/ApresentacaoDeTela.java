@@ -1,8 +1,11 @@
 package view;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import controller.ProdutoController;
+import model.beans.Produto;
 
 public class ApresentacaoDeTela {
 
@@ -48,6 +51,14 @@ public class ApresentacaoDeTela {
 			}
 		}
 		return opcao;
+	}
+
+	public void exibirMensagem(List<Produto> list) {
+		for(Produto obj : list) {
+			
+			System.out.println(obj);
+		}
+		
 	}
 
 //	public int menuPrincipal() {

@@ -36,7 +36,7 @@ public class ProdutoController {
 	public void findByCategoria() {
 		ApresentacaoDeTela at = new ApresentacaoDeTela();
 		Categoria cat = new Categoria();
-	
+
 		try {
 
 			int menu = at.telaFindByCategoria();
@@ -47,14 +47,13 @@ public class ProdutoController {
 				cat = new Categoria(2, null);
 			} else if (menu == 2) {
 				cat = new Categoria(3, null);
-			} else if(menu > 2) {
+			} else if (menu > 2) {
 				System.out.println("Categoria Invalida");
 			}
-			
+
 			ProdutoDao produtoDao = DaoFactory.createProdutoDao();
 			List<Produto> list = produtoDao.findByCategoria(cat);
 			at.mostrarMsg("Produto Encontrados: " + list);
-			
 
 		} catch (NumberFormatException e) {
 			at.mostrarMsg("Formato Invalido. Digite Novamente");
@@ -64,5 +63,12 @@ public class ProdutoController {
 
 		}
 
+	}
+
+	public void findAll() {
+		ApresentacaoDeTela at = new ApresentacaoDeTela();
+		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
+		List<Produto> list = produtoDao.findAll();
+		at.exibirMensagem(list);
 	}
 }

@@ -15,7 +15,7 @@ public interface ProdutoDao {
 
 	Produto findById(Integer id);
 
-	List<ProdutoDao> findAll();
+	List<Produto> findAll();
 	
 	List<Produto> findByCategoria(Categoria Categoria);
 }
