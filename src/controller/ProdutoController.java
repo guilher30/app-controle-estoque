@@ -2,10 +2,13 @@ package controller;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import model.beans.Categoria;
 import model.beans.Produto;
 import model.dao.DaoFactory;
 import model.dao.ProdutoDao;
+import model.dao.impl.ProdutoDaoJDBC;
 import view.ApresentacaoDeTela;
 
 public class ProdutoController {
@@ -71,4 +74,30 @@ public class ProdutoController {
 		List<Produto> list = produtoDao.findAll();
 		at.exibirMensagem(list);
 	}
+
+	public void update() {
+		ApresentacaoDeTela at = new ApresentacaoDeTela();
+		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
+		
+		int id = at.telaUpdate("Digite o id do produto que deseja atualizar quantidade: ");
+		Produto obj = produtoDao.findById(id);
+		
+		if(obj!= null) {
+		int qtd;
+		int newQtd;
+		String resp = at.menuUpdate();
+		if (resp.equalsIgnoreCase("retirar")) {
+			qtd = at.telaUpdate("Digite o a quantidade a ser removido: ");
+			newQtd = obj.getQtd() - qtd;
+		} else {
+			qtd = at.telaUpdate("Digite o a quantidade a ser adionada: ");
+			newQtd = obj.getQtd() + qtd;
+		}
+
+		produtoDao.update(newQtd, obj.getId());
+		}else {
+			at.mostrarMsg("Produto não encontrado");
+		}
+	}
+
 }

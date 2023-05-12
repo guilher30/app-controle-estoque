@@ -117,4 +117,37 @@ public class ApresentacaoDeTela {
 //		}
 //
 //	}
-}
+	
+	public Integer telaUpdate(String msg) {
+		Integer id = Integer.parseInt(JOptionPane.showInputDialog(msg));
+		return id;
+	}
+	
+	public String menuUpdate() {
+		 int opcao = 0;
+	        do {
+	            opcao = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Menu",
+	                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+	                    new Object[] { "Retirar", "Adicionar" }, "default");
+	            switch (opcao) {
+	                case 0:
+	                   return "retirar";
+	                case 1:
+	                    return "adicionar";
+	                default:
+	                    break;
+	            }
+	        } while (opcao != JOptionPane.CLOSED_OPTION);
+			return null;
+	    }
+	}
+	
+
+
+
+
+
+	
+
+	
+

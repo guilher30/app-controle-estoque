@@ -149,10 +149,18 @@ public class Produto implements Serializable {
 				+ "\nData Cadastro: " + dataCad + "\nCategoria: " + categoria + "\n\n";
 	}
 	
+	//public boolean validarUpdate(Produto obj, Integer qtd, String resp){
+		//if(resp.equalsIgnoreCase("retirar")) {
+		//	if(obj.getQtd() - qtd< 0) {
+				
+		//		return false;
+		//	}
+		//}
+		
+	}
 	
 	
 	
 	
 	
-	
-}
+

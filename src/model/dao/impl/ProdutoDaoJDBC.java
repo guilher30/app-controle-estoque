@@ -60,9 +60,23 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 	}
 
 	@Override
-	public void update(ProdutoDao obj) {
-		// TODO Auto-generated method stub
+	public void update(Integer newQtd, Integer id) {
+		
+		PreparedStatement st = null;
 
+		try {
+			st = conn.prepareStatement("UPDATE produto " + "SET Qtd = ? WHERE Id = ?");
+			
+			st.setInt(1, newQtd);
+			st.setInt(2, id);
+
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override

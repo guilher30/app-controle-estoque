@@ -9,7 +9,7 @@ public interface ProdutoDao {
 	
 	void insert(Produto obj);
 
-	void update(ProdutoDao obj);
+	void update(Integer Qtd,Integer id);
 
 	void deleteByid(Integer id);
 

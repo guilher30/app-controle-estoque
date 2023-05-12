@@ -23,10 +23,11 @@ public class Program {
 //		pc.findByCategoria();
 		//pc.findAll();
 		Categoria cat = new Categoria(1, null);
-		Produto produto = new Produto(null, "Oleo", 30, 20, 100, new Date(), cat);
-		produtoDao.insert(produto);
-		System.out.println("Inserido com sucesso Novo id = " + produto.getId());
-		
+		//Produto produto = new Produto(null, "Oleo", 30, 20, 100, new Date(), cat);
+		//produtoDao.insert(produto);
+		//System.out.println("Inserido com sucesso Novo id = " + produto.getId());
+		//produtoDao.update(1, 50);
+		pc.update();
 	}
 
 }
