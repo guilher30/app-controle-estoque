@@ -7,7 +7,7 @@ import model.beans.Produto;
 
 public interface ProdutoDao {
 	
-	void insert(ProdutoDao obj);
+	void insert(Produto obj);
 
 	void update(ProdutoDao obj);
 
@@ -18,4 +18,6 @@ public interface ProdutoDao {
 	List<Produto> findAll();
 	
 	List<Produto> findByCategoria(Categoria Categoria);
+
+	
 }
