@@ -27,7 +27,8 @@ public class Program {
 		//produtoDao.insert(produto);
 		//System.out.println("Inserido com sucesso Novo id = " + produto.getId());
 		//produtoDao.update(1, 50);
-		pc.update();
+		//pc.update();
+		pc.deleteById();
 	}
 
 }

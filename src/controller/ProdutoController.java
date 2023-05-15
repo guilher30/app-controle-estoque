@@ -105,5 +105,11 @@ public class ProdutoController {
 		}
 		
 	}
+	public void deleteById() {
+		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
+		produtoDao.deleteByid(7);
+		
+		
+	}
 
 }
