@@ -15,6 +15,7 @@ import db.DbException;
 import model.beans.Categoria;
 import model.beans.Produto;
 import model.dao.ProdutoDao;
+import view.ApresentacaoDeTela;
 
 public class ProdutoDaoJDBC implements ProdutoDao {
 
@@ -81,13 +82,14 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 
 	@Override
 	public void deleteByid(Integer id) {
+		ApresentacaoDeTela at = new ApresentacaoDeTela();
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement("DELETE FROM produto WHERE Id = ?" );
 			st.setInt(1, id);
 			int rowsAffected = st.executeUpdate();
 			if(rowsAffected == 0) {
-				throw new DbException("Produto não existe");
+				at.mostrarMsg("Não há nenhum produto com esse ID");
 			}
 			st.executeUpdate();
 		}catch(SQLException e) {

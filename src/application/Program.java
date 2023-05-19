@@ -8,6 +8,7 @@ import model.beans.Categoria;
 import model.beans.Produto;
 import model.dao.DaoFactory;
 import model.dao.ProdutoDao;
+import view.ApresentacaoDeTela;
 
 
 public class Program {
@@ -28,7 +29,8 @@ public class Program {
 		//System.out.println("Inserido com sucesso Novo id = " + produto.getId());
 		//produtoDao.update(1, 50);
 		//pc.update();
-		pc.deleteById();
+		ApresentacaoDeTela at = new ApresentacaoDeTela();
+		at.menu();
 	}
 
 }

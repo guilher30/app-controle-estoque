@@ -115,7 +115,7 @@ public class Produto implements Serializable {
 
 	public boolean validarUpdate(Produto obj, String resp, Integer newQtd) {
 		ApresentacaoDeTela at = new ApresentacaoDeTela();
-		if (resp.equalsIgnoreCase("retirar")) {
+		if (resp.equalsIgnoreCase("Remover")) {
 			if (newQtd < 0 ) {
 				at.mostrarMsg("não há estoque suficiente para fazer essa alteração");
 				return false;

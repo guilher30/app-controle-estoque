@@ -13,12 +13,12 @@ import view.ApresentacaoDeTela;
 
 public class ProdutoController {
 
-	public void valFindById() {
+	public void findById(Integer id) {
 		ApresentacaoDeTela at = new ApresentacaoDeTela();
 
 		try {
 
-			Integer id = at.telaFindById();
+			
 			ProdutoDao produtoDao = DaoFactory.createProdutoDao();
 			Produto produto = produtoDao.findById(id);
 			if (produto == null) {
@@ -29,30 +29,24 @@ public class ProdutoController {
 
 		} catch (NumberFormatException e) {
 			at.mostrarMsg("Formato Invalido. Digite Novamente");
-			if (at.menuErro() == 0) {
-				valFindById();
-			}
-
+			
 		}
 	}
 
-	public void findByCategoria() {
+	public void findByCategoria(Categoria cat) {
+		StringBuilder sb = new StringBuilder();
 		ApresentacaoDeTela at = new ApresentacaoDeTela();
-		Categoria cat = new Categoria();
-
+		
 		try {
 
-			int menu = at.telaFindByCategoria();
-
-			if (menu == 0) {
-				cat = new Categoria(1, null);
-			} else if (menu == 1) {
-				cat = new Categoria(2, null);
-			} else if (menu == 2) {
-				cat = new Categoria(3, null);
-			} else if (menu > 2) {
-				System.out.println("Categoria Invalida");
-			}
+			if(cat.getNome().equalsIgnoreCase("Alimento"))
+				cat.setId(1);
+				else if(cat.getNome().equalsIgnoreCase("Limpeza")){
+					cat.setId(2);
+				}
+				else if(cat.getNome().equalsIgnoreCase("Bebida")) {
+					cat.setId(3);
+				}
 
 			ProdutoDao produtoDao = DaoFactory.createProdutoDao();
 			List<Produto> list = produtoDao.findByCategoria(cat);
@@ -61,43 +55,47 @@ public class ProdutoController {
 		} catch (NumberFormatException e) {
 			at.mostrarMsg("Formato Invalido. Digite Novamente");
 			if (at.menuErro() == 0) {
-				valFindById();
+				findById(cat.getId());
 			}
 
 		}
 
 	}
 
-	public void findAll() {
+	public String findAll() {
 		ApresentacaoDeTela at = new ApresentacaoDeTela();
+		StringBuilder sb = new StringBuilder();
 		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
 		List<Produto> list = produtoDao.findAll();
-		at.exibirMensagem(list);
+		for(Produto p : list) {
+			sb.append(p.toString());
+		}
+		return sb.toString();
 	}
 
-	public void update() {
+	public void update(Integer id, Integer qtd, String operacao) {
 		ApresentacaoDeTela at = new ApresentacaoDeTela();
 		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
-
-		int id = at.telaUpdate("Digite o id do produto que deseja atualizar quantidade: ");
+		
+		
 		Produto obj = produtoDao.findById(id);
-		String resp =null;
+		
 		
 			
 		if (obj != null) {
-			int qtd;
+		
 			int newQtd;
 
-			resp = at.menuUpdate();
-			if (resp.equalsIgnoreCase("retirar")) {
-				qtd = at.telaUpdate("Digite o a quantidade a ser removido: ");
+			
+			if (operacao.equalsIgnoreCase("Remover")) {
+				
 				newQtd = obj.getQtd() - qtd;
 			} else {
-				qtd = at.telaUpdate("Digite o a quantidade a ser adionada: ");
+				
 				newQtd = obj.getQtd() + qtd;
 			}
 
-			if(obj.validarUpdate(obj, resp, newQtd)) {
+			if(obj.validarUpdate(obj, operacao, newQtd)) {
 				produtoDao.update(newQtd, obj.getId());
 			}
 		} else {
@@ -105,11 +103,16 @@ public class ProdutoController {
 		}
 		
 	}
-	public void deleteById() {
+	public void deleteById(Integer id) {
 		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
-		produtoDao.deleteByid(7);
+		produtoDao.deleteByid(id);
 		
 		
 	}
+	public void insert(Produto obj) {
+		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
+		produtoDao.insert(obj);
+	}
+	
 
 }
