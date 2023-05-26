@@ -1,21 +1,26 @@
 package view;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 import controller.ProdutoController;
+import controller.UsuarioController;
 import model.beans.Categoria;
 import model.beans.Produto;
 
@@ -151,6 +156,71 @@ public class ApresentacaoDeTela {
 		} while (opcao != JOptionPane.CLOSED_OPTION);
 		return null;
 	}
+	 public boolean telaLogin() {
+	        JFrame frame = new JFrame("Tela de Login");
+	        frame.setSize(300, 200);
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        frame.setLocationRelativeTo(null);
+	        frame.setResizable(false);
+
+	        // Criação dos componentes
+	        JPanel painel = new JPanel();
+	        JLabel labelUsuario = new JLabel("Usuário:");
+	        JLabel labelSenha = new JLabel("Senha:");
+	        JTextField campoUsuario = new JTextField(20);
+	        JPasswordField campoSenha = new JPasswordField(20);
+	        JButton botaoLogin = new JButton("Login");
+	        JToggleButton toggleSenha = new JToggleButton("Mostrar senha");
+
+	        // Adiciona os componentes ao painel
+	        painel.add(labelUsuario);
+	        painel.add(campoUsuario);
+	        painel.add(labelSenha);
+	        painel.add(campoSenha);
+	        painel.add(botaoLogin);
+	        painel.add(toggleSenha);
+
+	        // Configura o layout do painel
+	        painel.setLayout(new GridLayout(4, 2, 10, 10));
+	        painel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+	        // Configura o evento de clique do botão de login
+	        botaoLogin.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                String usuario = campoUsuario.getText();
+	                String senha = new String(campoSenha.getPassword());
+
+	                UsuarioController uc = new UsuarioController();
+	                boolean loginSucesso = uc.login(usuario, senha);
+
+	                if (loginSucesso) {
+	                    frame.dispose();
+	                    ApresentacaoDeTela at = new ApresentacaoDeTela();
+	                    at.menu();// Fecha a janela de login se o login for bem-sucedido
+	                }
+	            }
+	        });
+
+	        // Configura o evento de clique do botão de mostrar senha
+	        toggleSenha.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                if (toggleSenha.isSelected()) {
+	                    campoSenha.setEchoChar((char) 0); // Mostra a senha
+	                } else {
+	                    campoSenha.setEchoChar('\u2022'); // Oculta a senha
+	                }
+	            }
+	        });
+
+	        // Adiciona o painel à janela
+	        frame.add(painel);
+
+	        // Exibe a janela
+	        frame.setVisible(true);
+
+	        return frame.isVisible(); // Retorna true se a janela estiver visível (não foi fechada pelo usuário)
+	    }
+	
 
 	public void menu() {
 		JFrame frame = new JFrame("Menu");

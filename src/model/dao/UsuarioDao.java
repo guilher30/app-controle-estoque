@@ -14,4 +14,6 @@ public interface UsuarioDao {
 	Usuario findById(Integer id);
 
 	List<Usuario> findAll();
+
+	Usuario login (String email, String senha);
 }
