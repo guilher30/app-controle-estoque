@@ -2,13 +2,10 @@ package controller;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import model.beans.Categoria;
 import model.beans.Produto;
 import model.dao.DaoFactory;
 import model.dao.ProdutoDao;
-import model.dao.impl.ProdutoDaoJDBC;
 import view.ApresentacaoDeTela;
 
 public class ProdutoController {
